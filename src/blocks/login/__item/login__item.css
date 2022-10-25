@@ -1,0 +1,23 @@
+.login__item {
+  width: 100%;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+  height: 27px;
+  border: none;
+  padding: 0;
+  color: #fff;
+  box-sizing: border-box;
+  border-bottom: 2px solid #ccc;
+  font-size: 14px;
+  line-height: 1.21;
+  background: none;
+  margin-bottom: 30px;
+}
+
+.login__item::placeholder {
+  color: #ccc;
+}
+
+.login__item:focus {
+  outline: none;
+}
