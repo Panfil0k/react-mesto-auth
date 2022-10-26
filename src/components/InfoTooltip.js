@@ -3,9 +3,14 @@ import SuccessImg from '../images/success-icon.svg';
 import FailedImg from '../images/failed-icon.svg';
 
 function InfoTooltip({ isOpen, onClose, registerError }) {
+  function handleOverlayClick(e) {
+    if(e.currentTarget === e.target) {
+      onClose();
+    }
+  }
 
   return (
-    <div className={`tooltip ${isOpen ? 'tooltip_open' : ''}`}>
+    <div className={`tooltip ${isOpen ? 'tooltip_open' : ''}`} onClick={handleOverlayClick}>
       <div className="tooltip__container">
         <img className="tooltip__img" src={`${registerError ? FailedImg : SuccessImg}`} alt="Результат регистрации" />
         <p className="tooltip__text">

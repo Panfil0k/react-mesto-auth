@@ -1,4 +1,4 @@
-.register__signin {
+.auth__signin {
   font-size: 14px;
   line-height: 1.21;
   text-decoration: none;
@@ -6,6 +6,6 @@
   transition: opacity .3s;
 }
 
-.register__signin:hover {
+.auth__signin:hover {
   opacity: .6;
 }

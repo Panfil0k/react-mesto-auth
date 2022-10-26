@@ -14,7 +14,7 @@ import Login from './Login';
 import Register from './Register';
 import ProtectedRoute from './ProtectedRoute';
 import InfoTooltip from './InfoTooltip';
-import * as mestoAuth from '../utils/mestoAuth';
+import mestoAuth from '../utils/mestoAuth';
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -40,6 +40,9 @@ function App() {
         });
       }
     })
+    .catch((err) => {
+      console.log(`Ошибка: ${err}`);
+    })
   }
 
   useEffect(() => {
@@ -57,19 +60,29 @@ function App() {
 
   const onLogin = ({ email, password }) => {
     return mestoAuth.authorize(email, password).then((res) => {
-      console.log(res.token);
-      if (!res || res.status === 400) throw new Error("Неправильное имя пользователя или пароль");
       if (res.token) {
         localStorage.setItem('jwt', res.token);
         setLoggedIn(true);
       }
-    });
+    })
+    .catch((err) => {
+      console.log(`Ошибка: ${err}`);
+    })
   }
 
   const onRegister = ({ email, password }) => {
-    return mestoAuth.register(email, password).then((res) => {
-      if (!res || res.status === 400) throw new Error("Что-то пошло не так");
+    return mestoAuth.register(email, password)
+    .then((res) => {
       return res;
+    })
+    .then(() => {
+      setRegisterError(false);
+      setIsInfoTooltipOpen(true);
+      history.push('/sign-in')
+    })
+    .catch(() => {
+      setRegisterError(true);
+      setIsInfoTooltipOpen(true);
     })
   }
 
@@ -151,7 +164,7 @@ function App() {
     .catch((err) => {
       console.log(`Ошибка: ${err}`);
     })
-
+    .finally(() => setIsLoading(false))
   }
 
   function handleCardLike(card) {
@@ -220,7 +233,7 @@ function App() {
             />
             <Route path="/sign-up">
               <div>
-              <Register onRegister={onRegister} setIsInfoTooltipOpen={setIsInfoTooltipOpen} setRegisterError={setRegisterError} />
+              <Register onRegister={onRegister} />
               </div>
             </Route>
             <Route path="/sign-in">

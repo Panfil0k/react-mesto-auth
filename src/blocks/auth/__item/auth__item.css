@@ -1,4 +1,4 @@
-.login__item {
+.auth__item {
   width: 100%;
   font-family: 'Inter', 'Arial', sans-serif;
   font-weight: 400;
@@ -14,10 +14,10 @@
   margin-bottom: 30px;
 }
 
-.login__item::placeholder {
+.auth__item::placeholder {
   color: #ccc;
 }
 
-.login__item:focus {
+.auth__item:focus {
   outline: none;
 }

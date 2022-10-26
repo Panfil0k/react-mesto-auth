@@ -1,4 +1,4 @@
-.register__submit {
+.auth__submit {
   width: 100%;
   border: 0;
   padding: 0;
@@ -9,6 +9,6 @@
   transition: opacity .3s;
 }
 
-.register__submit:hover {
+.auth__submit:hover {
   opacity: .6;
 }
