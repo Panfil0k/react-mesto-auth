@@ -8,4 +8,8 @@
 * CSS (Grid, Flexbox)
 * NPM
 
+## В планах:
+* Добавить валидацию форм на React.js
+* Сделать страницы авторизации и регистрации адаптивными
+
 [Ссылка на проект](https://panfil0k.github.io/react-mesto-auth/)
